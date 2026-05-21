@@ -1,0 +1,39 @@
+/* ================================
+   Community Health Clinic CMS
+   Custom Stylesheet - WA0105
+================================ */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+}
+
+.sidebar {
+  min-height: 100vh;
+  border-right: 1px solid #e0e0e0;
+}
+
+.nav-link:hover {
+  background-color: #e8f0fe;
+  border-radius: 5px;
+  color: #0d6efd !important;
+}
+
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.navbar-brand {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+table th {
+  font-size: 13px;
+}
+
+table td {
+  font-size: 13px;
+  vertical-align: middle;
+}
