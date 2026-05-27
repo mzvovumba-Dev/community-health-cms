@@ -6,6 +6,7 @@
   <title>Patients — Clinic Management System</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -30,10 +31,10 @@
             <a class="nav-link text-dark" href="appointments.html">Appointments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Medical Records</a>
+            <a class="nav-link text-dark" href="medical-records.html">Medical Records</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Staff</a>
+            <a class="nav-link text-dark" href="staff.html">Staff</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" href="#">Reports</a>
@@ -50,7 +51,7 @@
             <div class="card text-white bg-primary shadow">
               <div class="card-body">
                 <h6 class="card-title">Total Patients</h6>
-                <h2 class="fw-bold">124</h2>
+                <h2 class="fw-bold" id="totalPatients">3</h2>
               </div>
             </div>
           </div>
@@ -84,10 +85,10 @@
         <div class="card shadow">
           <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold">Patient List</h5>
-            <button class="btn btn-primary btn-sm">+ Add Patient</button>
+            <button class="btn btn-primary btn-sm" onclick="document.getElementById('addPatientModal').style.display='flex'">+ Add Patient</button>
           </div>
           <div class="card-body">
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover table-bordered" id="patientsTable">
               <thead class="table-primary">
                 <tr>
                   <th>ID</th>
@@ -106,8 +107,8 @@
                   <td>Female</td>
                   <td>0712345678</td>
                   <td>
-                    <button class="btn btn-sm btn-warning">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-warning" onclick="editPatient(this)">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deletePatient(this)">Delete</button>
                   </td>
                 </tr>
                 <tr>
@@ -117,8 +118,8 @@
                   <td>Male</td>
                   <td>0823456789</td>
                   <td>
-                    <button class="btn btn-sm btn-warning">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-warning" onclick="editPatient(this)">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deletePatient(this)">Delete</button>
                   </td>
                 </tr>
                 <tr>
@@ -128,8 +129,8 @@
                   <td>Female</td>
                   <td>0634567890</td>
                   <td>
-                    <button class="btn btn-sm btn-warning">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-warning" onclick="editPatient(this)">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deletePatient(this)">Delete</button>
                   </td>
                 </tr>
               </tbody>
@@ -140,6 +141,40 @@
       </div>
     </div>
   </div>
+
+  <!-- Add / Edit Patient Modal -->
+  <div id="addPatientModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:white; border-radius:8px; padding:30px; width:450px;">
+      <h5 class="fw-bold mb-3" id="modalTitle">Add New Patient</h5>
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="patientFullName" placeholder="Enter full name"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="patientDOB"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select class="form-control" id="patientGender">
+          <option value="">Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" id="patientPhone" placeholder="Enter phone number"/>
+      </div>
+      <div class="d-flex justify-content-end gap-2">
+        <button class="btn btn-secondary" onclick="closePatientModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="addPatient()">Save Patient</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
 
 </body>
 </html>
